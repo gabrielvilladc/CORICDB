@@ -108,7 +108,7 @@ INSERT INTO Parameters.ReportFile VALUES
  
  
  /**/
-update Parameters.Field set Field
+update Parameters.Field set Field_NameInDB = 'Description', Field_Description= 'CUSIP Description', Field_NameInExcel ='Description' where Field_Id = 13
 
  /*GABRIEL*/
 --FIELDS
