@@ -5,328 +5,323 @@
 
 
 
-CREATE TABLE Cusip 
+CREATE TABLE Parameters.Cusip 
     (
-     CusipId BIGINT NOT NULL IDENTITY(1,1), 
-     Code VARCHAR (200) NOT NULL , 
-     LotNumber INTEGER NOT NULL , 
-     EntityProductId BIGINT NOT NULL 
+     Cusip_Id BIGINT NOT NULL IDENTITY(1,1), 
+     Cusip_Code VARCHAR (200) NOT NULL , 
+     Cusip_LotNumber INTEGER NOT NULL , 
+     Cusip_EntityProductId BIGINT NOT NULL 
     )
 GO
 
-ALTER TABLE Cusip ADD CONSTRAINT Cusip_PK PRIMARY KEY CLUSTERED (CusipId)
+ALTER TABLE Parameters.Cusip ADD CONSTRAINT Cusip_PK PRIMARY KEY CLUSTERED (Cusip_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
---sdfsdfsd
-CREATE TABLE Entity 
+CREATE TABLE Parameters.Entity 
     (
-     EntityId INTEGER NOT NULL IDENTITY(1,1), 
-     EntityName VARCHAR (200) NOT NULL , 
-     LineOfBussinessCode VARCHAR (200) NOT NULL , 
-     AdhocFlag VARCHAR (1) NOT NULL , 
-     EntityType VARCHAR (200) NOT NULL , 
-     RelationshipManager VARCHAR (200) NOT NULL , 
-     ContactPhone VARCHAR (200) NOT NULL , 
-     RegionLocale VARCHAR (200) NOT NULL , 
-     Language VARCHAR (200) NOT NULL , 
-     ShowConsolidatedHoldingsPage VARCHAR (200) NOT NULL 
+     Entity_Id INTEGER NOT NULL IDENTITY(1,1), 
+     Entity_Name VARCHAR (200) NOT NULL , 
+     Entity_LineOfBussinessCode VARCHAR (200) NOT NULL , 
+     Entity_AdhocFlag VARCHAR (1) NOT NULL , 
+     Entity_Type VARCHAR (200) NOT NULL , 
+     Entity_RelationshipManager VARCHAR (200) NOT NULL , 
+     Entity_ContactPhone VARCHAR (200) NOT NULL , 
+     Entity_RegionLocale VARCHAR (200) NOT NULL , 
+     Entity_Language VARCHAR (200) NOT NULL ,
+     Entity_ShowConsolidatedHoldingsPage VARCHAR (200) NOT NULL 
     )
 GO
 
-ALTER TABLE Entity ADD CONSTRAINT CompanyEntity_PK PRIMARY KEY CLUSTERED (EntityId)
+ALTER TABLE Parameters.Entity ADD CONSTRAINT Entity_PK PRIMARY KEY CLUSTERED (Entity_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE EntityProduct 
+CREATE TABLE Parameters.EntityProduct 
     (
-     EntityProductId BIGINT NOT NULL IDENTITY(1,1), 
-     ProductId INTEGER NOT NULL , 
-     EntityId INTEGER NOT NULL , 
-     PeriodId INTEGER NOT NULL , 
-     LineofBusinessCode VARCHAR (200) NOT NULL , 
-     AdhocFlag VARCHAR (1) NOT NULL , 
-     SortOrder INTEGER NOT NULL 
+     EntityProduct_Id BIGINT NOT NULL IDENTITY(1,1), 
+     EntityProduct_ProductId INTEGER NOT NULL , 
+     EntityProduct_EntityId INTEGER NOT NULL , 
+     EntityProduct_PeriodId INTEGER NOT NULL , 
+     EntityProduct_LineofBusinessCode VARCHAR (200) NOT NULL , 
+     EntityProduct_AdhocFlag VARCHAR (1) NOT NULL , 
+     EntityProduct_SortOrder INTEGER NOT NULL 
     )
 GO
 
-ALTER TABLE EntityProduct ADD CONSTRAINT EntityProduct_PK PRIMARY KEY CLUSTERED (EntityProductId)
+ALTER TABLE Parameters.EntityProduct ADD CONSTRAINT EntityProduct_PK PRIMARY KEY CLUSTERED (EntityProduct_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE EntityProductReportFile 
+CREATE TABLE Parameters.EntityProductReportFile 
     (
-     EntityProductFileId INTEGER NOT NULL IDENTITY(1,1), 
-     EntityProductId BIGINT NOT NULL , 
-     ReportFileId UNIQUEIDENTIFIER NOT NULL , 
-     StartDateTime DATETIME NOT NULL , 
-     EndDateTime DATETIME NOT NULL 
+     EPRF_EntityProductFileId INTEGER NOT NULL IDENTITY(1,1), 
+     EPRF_EntityProductId BIGINT NOT NULL , 
+     EPRF_ReportFileId INTEGER NOT NULL , 
+     EPRF_StartDateTime DATETIME NOT NULL , 
+     EPRF_EndDateTime DATETIME NOT NULL 
     )
 GO
 
-ALTER TABLE EntityProductReportFile ADD CONSTRAINT EntityProductReportFile_PK PRIMARY KEY CLUSTERED (EntityProductFileId)
+ALTER TABLE Parameters.EntityProductReportFile ADD CONSTRAINT EntityProductReportFile_PK PRIMARY KEY CLUSTERED (EPRF_EntityProductFileId)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE EntityProductValue 
+CREATE TABLE Parameters.EntityProductValue 
     (
-     EntityProductValueId BIGINT NOT NULL IDENTITY(1,1), 
-     EntityProductId BIGINT NOT NULL , 
-     FieldId UNIQUEIDENTIFIER NOT NULL , 
-     Value VARCHAR (200) NOT NULL , 
-     CusipId BIGINT NOT NULL 
+     EPV_Id BIGINT NOT NULL IDENTITY(1,1), 
+     EPV_EntityProductId BIGINT NOT NULL , 
+     EPV_FieldId INTEGER NOT NULL , 
+     EPV_Value VARCHAR (200) NOT NULL , 
+     EPV_CusipId BIGINT NOT NULL 
     )
 GO
 
-ALTER TABLE EntityProductValue ADD CONSTRAINT EntityProductValue_PK PRIMARY KEY CLUSTERED (EntityProductValueId)
+ALTER TABLE Parameters.EntityProductValue ADD CONSTRAINT EntityProductValue_PK PRIMARY KEY CLUSTERED (EPV_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE Field 
+CREATE TABLE Parameters.Field 
     (
-     FieldId UNIQUEIDENTIFIER NOT NULL , 
-     FieldNameInDB VARCHAR (200) NOT NULL , 
-     Description VARCHAR (200) NOT NULL , 
-     FieldNameInExcel VARCHAR (200) NOT NULL , 
-     CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
-     LastUpdate DATETIME , 
-     FieldFormat VARCHAR (200) NOT NULL , 
-     IsActive BIT NOT NULL , 
-     FieldType VARCHAR (200) NOT NULL , 
-     DefaultValue VARCHAR (200) NOT NULL , 
-     Granularity VARCHAR (200) NOT NULL 
+     Field_Id INTEGER NOT NULL , 
+     Field_NameInDB VARCHAR (200) NOT NULL , 
+     Field_Description VARCHAR (200) NOT NULL , 
+     Field_NameInExcel VARCHAR (200) NOT NULL , 
+     Field_CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
+     Field_LastUpdate DATETIME , 
+     Field_Format VARCHAR (200) NOT NULL , 
+     Field_IsActive BIT NOT NULL , 
+     Field_Type VARCHAR (200) NOT NULL , 
+     Field_DefaultValue VARCHAR (200) NOT NULL , 
+     Field_Granularity VARCHAR (200) NOT NULL 
     )
 GO
 
-ALTER TABLE Field ADD CONSTRAINT Field_PK PRIMARY KEY CLUSTERED (FieldId)
+ALTER TABLE Parameters.Field ADD CONSTRAINT Field_PK PRIMARY KEY CLUSTERED (Field_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE Period 
+CREATE TABLE Parameters.Period 
     (
-     PeriodId INTEGER NOT NULL IDENTITY(1,1), 
-     PeriodDate DATE NOT NULL , 
-     Description VARCHAR (200) NOT NULL , 
-     CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
-     LastUdptate DATETIME 
+     Period_Id INTEGER NOT NULL IDENTITY(1,1), 
+     Period_PeriodDate DATE NOT NULL , 
+     Period_Description VARCHAR (200) NOT NULL , 
+     Period_CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
+     Period_LastUdptate DATETIME 
     )
 GO
 
-ALTER TABLE Period ADD CONSTRAINT Period_PK PRIMARY KEY CLUSTERED (PeriodId)
+ALTER TABLE Parameters.Period ADD CONSTRAINT Period_PK PRIMARY KEY CLUSTERED (Period_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE Product 
+CREATE TABLE Parameters.Product 
     (
-     ProductId INTEGER NOT NULL IDENTITY(1,1), 
-     ProductName VARCHAR (200) NOT NULL , 
-     LineofBusinessCode VARCHAR (200) NOT NULL , 
-     AdhocFlag VARCHAR (1) NOT NULL 
+     Product_Id INTEGER NOT NULL IDENTITY(1,1), 
+     Product_ProductName VARCHAR (200) NOT NULL , 
+     Product_LineofBusinessCode VARCHAR (200) NOT NULL , 
+     Product_AdhocFlag VARCHAR (1) NOT NULL 
     )
 GO
 
-ALTER TABLE Product ADD CONSTRAINT Product_PK PRIMARY KEY CLUSTERED (ProductId)
+ALTER TABLE Parameters.Product ADD CONSTRAINT Product_PK PRIMARY KEY CLUSTERED (Product_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE ReportFile 
+CREATE TABLE Parameters.ReportFile 
     (
-     ReportFileId UNIQUEIDENTIFIER NOT NULL IDENTITY(1,1), 
-     ReportFileName VARCHAR (200) NOT NULL , 
-     Desciption VARCHAR (200) NOT NULL , 
-     Path VARCHAR (400) NOT NULL , 
-     SortOrder INTEGER NOT NULL , 
-     IsActive BIT NOT NULL , 
-     CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
-     LastUpdate DATETIME , 
-     ReportType VARCHAR (200) NOT NULL 
+     ReportFile_Id INTEGER NOT NULL IDENTITY(1,1), 
+     ReportFile_Name VARCHAR (200) NOT NULL , 
+     ReportFile_Description VARCHAR (200) NOT NULL , 
+     ReportFile_Path VARCHAR (400) NOT NULL , 
+     ReportFile_SortOrder INTEGER NOT NULL , 
+     ReportFile_IsActive BIT NOT NULL , 
+     ReportFile_CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
+     ReportFile_LastUpdate DATETIME , 
+     ReportFile_ReportType VARCHAR (200) NOT NULL 
     )
 GO 
 
 
-
-EXEC sp_addextendedproperty 'MS_Description' , 'Destination Path' , 'USER' , 'dbo' , 'TABLE' , 'ReportFile' , 'COLUMN' , 'Path' 
-GO
-
-ALTER TABLE ReportFile ADD CONSTRAINT Files_PK PRIMARY KEY CLUSTERED (ReportFileId)
+ALTER TABLE Parameters.ReportFile ADD CONSTRAINT ReportFile_PK PRIMARY KEY CLUSTERED (ReportFile_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE ReportFileField 
+CREATE TABLE Parameters.ReportFileField 
     (
-     FileFieldId INTEGER NOT NULL IDENTITY(1,1), 
-     ReportFileId UNIQUEIDENTIFIER NOT NULL , 
-     FieldId UNIQUEIDENTIFIER NOT NULL , 
-     FieldType VARCHAR (200) NOT NULL , 
-     FieldFormat VARCHAR (200) NOT NULL , 
-     DefaultValue VARCHAR (200) NOT NULL , 
-     SortOrderColumn INTEGER NOT NULL , 
-     SortOrderRow INTEGER NOT NULL 
+     RFF_Id INTEGER NOT NULL IDENTITY(1,1), 
+     RFF_ReportFileId INTEGER NOT NULL , 
+     RFF_FieldId INTEGER NOT NULL , 
+     RFF_FieldType VARCHAR (200) NOT NULL , 
+     RFF_FieldFormat VARCHAR (200) NOT NULL , 
+     RFF_DefaultValue VARCHAR (200) NOT NULL , 
+     RFF_SortOrderColumn INTEGER NOT NULL , 
+     RFF_SortOrderRow INTEGER NOT NULL 
     )
 GO
 
-ALTER TABLE ReportFileField ADD CONSTRAINT SheetField_PK PRIMARY KEY CLUSTERED (FileFieldId)
+ALTER TABLE Parameters.ReportFileField ADD CONSTRAINT ReportFileField_PK PRIMARY KEY CLUSTERED (RFF_Id)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-ALTER TABLE Cusip 
+ALTER TABLE Parameters.Cusip 
     ADD CONSTRAINT Cusip_EntityProduct_FK FOREIGN KEY 
     ( 
-     EntityProductId
+     Cusip_EntityProductId
     ) 
-    REFERENCES EntityProduct 
+    REFERENCES Parameters.EntityProduct 
     ( 
-     EntityProductId 
+     EntityProduct_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE EntityProduct 
+ALTER TABLE Parameters.EntityProduct 
     ADD CONSTRAINT EntityProduct_Entity_FK FOREIGN KEY 
     ( 
-     EntityId
+     EntityProduct_EntityId
     ) 
-    REFERENCES Entity 
+    REFERENCES Parameters.Entity 
     ( 
-     EntityId 
+     Entity_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE EntityProduct 
+ALTER TABLE Parameters.EntityProduct 
     ADD CONSTRAINT EntityProduct_Period_FK FOREIGN KEY 
     ( 
-     PeriodId
+     EntityProduct_PeriodId
     ) 
-    REFERENCES Period 
+    REFERENCES Parameters.Period 
     ( 
-     PeriodId 
+     Period_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE EntityProduct 
+ALTER TABLE Parameters.EntityProduct 
     ADD CONSTRAINT EntityProduct_Product_FK FOREIGN KEY 
     ( 
-     ProductId
+     EntityProduct_ProductId
     ) 
-    REFERENCES Product 
+    REFERENCES Parameters.Product 
     ( 
-     ProductId 
+     Product_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE EntityProductReportFile 
+ALTER TABLE Parameters.EntityProductReportFile 
     ADD CONSTRAINT EntityProductFile_EntityProduct_FK FOREIGN KEY 
     ( 
-     EntityProductId
+     EPRF_EntityProductId
     ) 
-    REFERENCES EntityProduct 
+    REFERENCES Parameters.EntityProduct 
     ( 
-     EntityProductId 
+     EntityProduct_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE EntityProductReportFile 
+ALTER TABLE Parameters.EntityProductReportFile 
     ADD CONSTRAINT EntityProductFile_ReportFile_FK FOREIGN KEY 
     ( 
-     ReportFileId
+     EPRF_ReportFileId
     ) 
-    REFERENCES ReportFile 
+    REFERENCES Parameters.ReportFile 
     ( 
-     ReportFileId 
+     ReportFile_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE EntityProductValue 
+ALTER TABLE Parameters.EntityProductValue 
     ADD CONSTRAINT "EntityProductPort/Cusipv1_Cusip_FK" FOREIGN KEY 
     ( 
-     EntityProductId
+     EPV_EntityProductId
     ) 
-    REFERENCES EntityProduct 
+    REFERENCES Parameters.EntityProduct 
     ( 
-     EntityProductId 
+     EntityProduct_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE EntityProductValue 
+ALTER TABLE Parameters.EntityProductValue 
     ADD CONSTRAINT "EntityProductPort/Cusipv1_Field_FK" FOREIGN KEY 
     ( 
-     FieldId
+     EPV_FieldId
     ) 
-    REFERENCES Field 
+    REFERENCES Parameters.Field 
     ( 
-     FieldId 
+     Field_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE EntityProductValue 
+ALTER TABLE Parameters.EntityProductValue 
     ADD CONSTRAINT EntityProductValue_Cusip_FK FOREIGN KEY 
     ( 
-     CusipId
+     EPV_CusipId
     ) 
-    REFERENCES Cusip 
+    REFERENCES Parameters.Cusip 
     ( 
-     CusipId 
+     Cusip_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE ReportFileField 
+ALTER TABLE Parameters.ReportFileField 
     ADD CONSTRAINT FlieField_File_FK FOREIGN KEY 
     ( 
-     ReportFileId
+     RFF_ReportFileId
     ) 
-    REFERENCES ReportFile 
+    REFERENCES Parameters.ReportFile 
     ( 
-     ReportFileId 
+     ReportFile_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE ReportFileField 
+ALTER TABLE Parameters.ReportFileField 
     ADD CONSTRAINT SheetField_Field_FK FOREIGN KEY 
     ( 
-     FieldId
+     RFF_FieldId
     ) 
-    REFERENCES Field 
+    REFERENCES Parameters.Field 
     ( 
-     FieldId 
+     Field_Id 
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
