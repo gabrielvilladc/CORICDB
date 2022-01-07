@@ -97,12 +97,12 @@ CREATE TABLE Parameters.Field
      Field_NameInDB VARCHAR (200) NOT NULL , 
      Field_Description VARCHAR (200) NOT NULL , 
      Field_NameInExcel VARCHAR (200) NOT NULL , 
-     Field_CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
+     Field_CreatedOn DATETIME DEFAULT GETDATE(), 
      Field_LastUpdate DATETIME , 
      Field_Format VARCHAR (200) NOT NULL , 
      Field_IsActive BIT NOT NULL , 
      Field_Type VARCHAR (200) NOT NULL , 
-     Field_DefaultValue VARCHAR (200) NOT NULL , 
+     Field_DefaultValue VARCHAR (200), 
      Field_Granularity VARCHAR (200) NOT NULL 
     )
 GO
@@ -118,7 +118,7 @@ CREATE TABLE Parameters.Period
      Period_Id INTEGER NOT NULL IDENTITY(1,1), 
      Period_PeriodDate DATE NOT NULL , 
      Period_Description VARCHAR (200) NOT NULL , 
-     Period_CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
+     Period_CreatedOn DATETIME DEFAULT GETDATE(), 
      Period_LastUdptate DATETIME 
     )
 GO
@@ -152,7 +152,7 @@ CREATE TABLE Parameters.ReportFile
      ReportFile_Path VARCHAR (400) NOT NULL , 
      ReportFile_SortOrder INTEGER NOT NULL , 
      ReportFile_IsActive BIT NOT NULL , 
-     ReportFile_CreatedOn DATETIME NOT NULL DEFAULT GETDATE(), 
+     ReportFile_CreatedOn DATETIME DEFAULT GETDATE(), 
      ReportFile_LastUpdate DATETIME , 
      ReportFile_ReportType VARCHAR (200) NOT NULL 
     )
@@ -172,7 +172,7 @@ CREATE TABLE Parameters.ReportFileField
      RFF_FieldId INTEGER NOT NULL , 
      RFF_FieldType VARCHAR (200) NOT NULL , 
      RFF_FieldFormat VARCHAR (200) NOT NULL , 
-     RFF_DefaultValue VARCHAR (200) NOT NULL , 
+     RFF_DefaultValue VARCHAR (200), 
      RFF_SortOrderColumn INTEGER NOT NULL , 
      RFF_SortOrderRow INTEGER NOT NULL 
     )
