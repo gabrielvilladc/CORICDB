@@ -33,38 +33,6 @@ insert into Parameters.Field VALUES
 ('ClosingPrice','ClosingPrice','ClosingPrice',GETDATE(),NULL,'',1,'Double',NULL,''),
 ('AcquiredIncome','AcquiredIncome','AcquiredIncome',GETDATE(),NULL,'',1,'Double',NULL,'')
 
-/***RELATIONSHIP***/
-INSERT INTO Parameters.ReportFileField VALUES
-(1,1,'Varchar','',NULL,1,1),
-(1,2,'Date','yyyy-MM-dd,NULL',2,1),
-(1,3,'Varchar','',NULL,3,1),
-(1,4,'Fixed','','USTR',4,1),
-(1,5,'Int','',,5,1),
-(1,6,'Varchar','',NULL,6,1),
-(1,7,'Fixed','','N',7,1),
-(1,8,'Varchar','',NULL,8,1),
-(1,9,'Varchar','',NULL,9,1),
-(1,10,'Fixed','',,10,1),
-(1,11,'Fixed','',,11,1),
-(1,12,'Varchar','',NULL,12,1),
-(1,13,'Double','',NULL,13,1),
-(1,14,'Date','yyyy-MM-dd',NULL,14,1),
-(1,15,'Fixed','',,15,1),
-(1,16,'Double','',NULL,16,1),
-(1,17,'Fixed','',,17,1),
-(1,18,'Fixed','',,18,1),
-(1,19,'Double','',NULL,19,1),
-(1,20,'Fixed','',,20,1),
-(1,21,'Fixed','',,21,1),
-(1,22,'Date','yyyy-MM-dd',NULL,22,1),
-(1,23,'Double','',NULL,23,1),
-(1,24,'Varchar','',NULL,24,1),
-(1,25,'Varchar','',NULL,25,1),
-(1,26,'Varchar','',NULL,26,1),
-(1,27,'Fixed','','',27,1),
-(1,28,'Fixed','','',28,1),
-(1,29,'Fixed','','',29,1),
-
 /*REPORTFILE*/
 INSERT INTO Parameters.ReportFile VALUES ('USTR_Holdings_MTH_{Period}_{GenerationDate}.csv','Holdings report','\\sunlifecorp.com\dfsslc\RL\Reports\CORIC\',2,1,NULL,NULL,'Horizontal')
 /**/
@@ -144,7 +112,7 @@ INSERT INTO Parameters.ReportFile VALUES
 
  /*GABRIEL*/
 --FIELDS
-INSERT [dbo].[Field] VALUES 
+INSERT Parameters.Field VALUES 
 (N'ProductId', NULL, N'ProductId', GETDATE(), NULL, NULL, N'varchar', 1, NULL, 'Product'),																																												
 (N'PeriodDate', NULL, N'PeriodDate', GETDATE(), NULL, N'YYYY-MM-DD', N'date   ', 1, NULL, 'Product'),
 (N'AdhocFlag', NULL, N'AdhocFlag', GETDATE(), NULL, NULL, N'char(1)', 1, NULL, 'Product'),
@@ -180,7 +148,7 @@ INSERT [dbo].[Field] VALUES
 (N'InceptionDate', NULL, N'InceptionDate', GETDATE(), NULL, N'YYYY-MM-DD', N'date', 1, NULL, 'Product'),
 (N'CurrentQuarter', NULL, N'CurrentQuarter', GETDATE(), NULL, NULL, N'double', 1, NULL, 'Product'),
 (N'ValueAdded', NULL, N'ValueAdded', GETDATE(), NULL, NULL, N'double', 1, NULL, 'Product'),
-(N'Risk',, NULL, N'Risk', GETDATE(), NULL, NULL, N'double', 1, NULL, 'Product'),
+(N'Risk', NULL, N'Risk', GETDATE(), NULL, NULL, N'double', 1, NULL, 'Product'),
 (N'TrackingError', NULL, N'TrackingError', GETDATE(), NULL, NULL, N'double', 1, NULL, 'Product'),
 (N'InfoRatio', NULL, N'InfoRatio', GETDATE(), NULL, NULL, N'double', 1, NULL, 'Product'),
 (N'PriorThreeMonth', NULL, N'PriorThreeMonth', GETDATE(), NULL, NULL, N'double', 1, NULL, 'Product'),
@@ -188,7 +156,7 @@ INSERT [dbo].[Field] VALUES
 (N'PriorNineMonth', NULL, N'PriorNineMonth', GETDATE(), NULL, NULL, N'double', 1, NULL, 'Product')
 
 --ReportFile
-INSERT [dbo].[ReportFile] VALUES (N'USTR_Performance_MTH_{Period}_{GenerationDate}.csv', N'Performance', N'\\sunlifecorp.com\dfsslc\RL\Reports\CORIC\', 3, 1, NULL, NULL, 'Horizontal')
+INSERT Parameters.ReportFile VALUES (N'USTR_Performance_MTH_{Period}_{GenerationDate}.csv', N'Performance', N'\\sunlifecorp.com\dfsslc\RL\Reports\CORIC\', 3, 1, NULL, NULL, 'Horizontal')
 
 --ReportFileField
 
