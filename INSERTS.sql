@@ -36,6 +36,37 @@ insert into Parameters.Field VALUES
 /*REPORTFILE*/
 INSERT INTO Parameters.ReportFile VALUES ('USTR_Holdings_MTH_{Period}_{GenerationDate}.csv','Holdings report','\\sunlifecorp.com\dfsslc\RL\Reports\CORIC\',2,1,NULL,NULL,'Horizontal')
 /**/
+insert into [CORIC].[Parameters].[ReportFileField] VALUES
+(1,1,'Varchar','',NULL,1,1),
+(1,2,'Date','yyyy-MM-dd',NULL,2,1),
+(1,3,'Varchar','',NULL,3,1),
+(1,4,'Fixed','','USTR',4,1),
+(1,5,'Int','','',5,1),
+(1,6,'Varchar','',NULL,6,1),
+(1,7,'Fixed','','N',7,1),
+(1,8,'Varchar','',NULL,8,1),
+(1,9,'Varchar','',NULL,9,1),
+(1,10,'Fixed','','',10,1),
+(1,11,'Fixed','','',11,1),
+(1,12,'Varchar','',NULL,12,1),
+(1,13,'Double','',NULL,13,1),
+(1,14,'Date','yyyy-MM-dd',NULL,14,1),
+(1,15,'Fixed','','',15,1),
+(1,16,'Double','',NULL,16,1),
+(1,17,'Fixed','','',17,1),
+(1,18,'Fixed','','',18,1),
+(1,19,'Double','',NULL,19,1),
+(1,20,'Fixed','','',20,1),
+(1,21,'Fixed','','',21,1),
+(1,22,'Date','yyyy-MM-dd',NULL,22,1),
+(1,23,'Double','',NULL,23,1),
+(1,24,'Varchar','',NULL,24,1),
+(1,25,'Varchar','',NULL,25,1),
+(1,26,'Varchar','',NULL,26,1),
+(1,27,'Fixed','','',27,1),
+(1,28,'Fixed','','',28,1),
+(1,29,'Fixed','','',29,1),
+(1,30,'Fixed','','',30,1)
 
 
  /*CRISTIAN*/
@@ -101,11 +132,63 @@ GO
 INSERT Parameters.Field VALUES (N'BenchmarkYTD', N'BenchmarkYTD', N'BenchmarkYTD', GETDATE(), NULL, NULL, 1, N'Double', NULL, N'Portfolio')
 GO
 
+--PENDING
+/*
+FieldId	FieldNameInDB	Description	FieldNameInExcel	SortOrder	CreatedOn	LastUpdate	Format	FieldType	IsActive
+12	Coupon	Coupon Value	Coupon	12	2022-01-04 09:34:43.570	NULL	NULL	Double	1
+*/
+
 --ReportFile
 INSERT INTO Parameters.ReportFile VALUES 
 ('USTR_PortfolioStats_MTH_{Period}_{GenerationDate}.csv', 'PortfolioStats report', '\\sunlifecorp.com\dfsslc\RL\Reports\CORIC\', 6, 1, NULL, NULL, 'Horizontal')
 
- 
+
+--Report File Field
+INSERT INTO Parameters.ReportFileFields VALUES 
+--Report file, Field, Field Type, Field Format, Default value, Sort Order column, Sort Order Row
+(2, 1, 'Varchar', NULL, NULL, 1, 1),
+(2, 2, 'Date', 'yyyy-MM-dd', NULL, 2, 1),
+(2, 3, 'Varchar', NULL, NULL, 3, 1),
+(2, 4, 'Fixed', NULL, 'USTR', 4, 1),
+(2, 5, 'Integer', NULL, NULL, 5, 1),
+(2, 57, 'Varchar', NULL, NULL, 6, 1),
+(2, 8, 'Varchar', NULL, NULL, 7, 1),
+(2, 17, 'Double', NULL, NULL, 8, 1),
+(2, 18, 'Double', NULL, NULL, 9, 1),
+(2, 31, 'Double', NULL, NULL, 10, 1),
+(2, 32, 'Double', NULL, NULL, 11, 1),
+(2, 58, 'Double', NULL, NULL, 12, 1),
+(2, PENDIENTE, 'Double', NULL, NULL, 13, 1),
+(2, 22, 'Date', 'yyyy-MM-dd', NULL, 14, 1),
+(2, 33, 'Double', NULL, NULL, 15, 1),
+(2, 34, 'Double', NULL, NULL, 16, 1),
+(2, 35, 'Double', NULL, NULL, 17, 1),
+(2, 36, 'Double', NULL, NULL, 18, 1),
+(2, 37, 'Double', NULL, NULL, 19, 1),
+(2, 38, 'Double', NULL, NULL, 20, 1),
+(2, 39, 'Double', NULL, NULL, 21, 1),
+(2, 40, 'Double', NULL, NULL, 22, 1),
+(2, 41, 'Double', NULL, NULL, 23, 1),
+(2, 42, 'Double', NULL, NULL, 24, 1),
+(2, 43, 'Double', NULL, NULL, 25, 1),
+(2, 23, 'Double', NULL, NULL, 26, 1),
+(2, 44, 'Double', NULL, NULL, 27, 1),
+(2, 45, 'Double', NULL, NULL, 28, 1),
+(2, 46, 'Double', NULL, NULL, 29, 1),
+(2, 47, 'Double', NULL, NULL, 30, 1),
+(2, 48, 'Double', NULL, NULL, 31, 1),
+(2, 49, 'Double', NULL, NULL, 32, 1),
+(2, 50, 'Double', NULL, NULL, 33, 1),
+(2, 51, 'Double', NULL, NULL, 34, 1),
+(2, 59, 'Double', NULL, NULL, 35, 1),
+(2, 52, 'Double', NULL, NULL, 36, 1),
+(2, 53, 'Double', NULL, NULL, 37, 1),
+(2, 20, 'Double', NULL, NULL, 38, 1),
+(2, 54, 'Double', NULL, NULL, 39, 1),
+(2, 21, 'Double', NULL, NULL, 40, 1),
+(2, 55, 'Double', NULL, NULL, 41, 1),
+(2, 56, 'Double', NULL, NULL, 42, 1),
+
  
  /**/
 update Parameters.Field set Field_NameInDB = 'Description', Field_Description= 'CUSIP Description', Field_NameInExcel ='Description' where Field_Id = 13
