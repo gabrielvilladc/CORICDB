@@ -144,7 +144,7 @@ INSERT INTO Parameters.ReportFile VALUES
 
 
 --Report File Field
-INSERT INTO Parameters.ReportFileFields VALUES 
+INSERT INTO Parameters.ReportFileField VALUES 
 --Report file, Field, Field Type, Field Format, Default value, Sort Order column, Sort Order Row
 (2, 1, 'Varchar', NULL, NULL, 1, 1),
 (2, 2, 'Date', 'yyyy-MM-dd', NULL, 2, 1),
@@ -187,7 +187,7 @@ INSERT INTO Parameters.ReportFileFields VALUES
 (2, 54, 'Double', NULL, NULL, 39, 1),
 (2, 21, 'Double', NULL, NULL, 40, 1),
 (2, 55, 'Double', NULL, NULL, 41, 1),
-(2, 56, 'Double', NULL, NULL, 42, 1),
+(2, 56, 'Double', NULL, NULL, 42, 1)
 
  
  /**/
@@ -234,6 +234,39 @@ INSERT Parameters.Field VALUES
 INSERT Parameters.ReportFile VALUES (N'USTR_Performance_MTH_{Period}_{GenerationDate}.csv', N'Performance', N'\\sunlifecorp.com\dfsslc\RL\Reports\CORIC\', 3, 1, NULL, NULL, 'Horizontal')
 
 --ReportFileField
+--INSERTS ReportFileField
+DECLARE @idField int 
+DECLARE @SortOrder INT
+SET @SortOrder = 1
+DECLARE db_cursor CURSOR FOR 
+SELECT Field_Id 
+FROM Parameters.Field
+WHERE Field_Id in (1,2,3,4,5,6,12,47,49,51) OR (Field_Id >61 AND Field_Id < 94)
 
+OPEN db_cursor  
+FETCH NEXT FROM db_cursor INTO @idField  
+WHILE @@FETCH_STATUS = 0  
+BEGIN  
+	IF ((select Field_NameInDB from Parameters.Field where Field_Id=@idField) = 'Description')
+	BEGIN
+		SET @SortOrder = 10
+	END
+	IF ((select Field_NameInDB from Parameters.Field where Field_Id=@idField) = 'TaxType')
+	BEGIN
+		SET @SortOrder = 7
+	END
+	IF ((select Field_NameInDB from Parameters.Field where Field_Id=@idField) = 'OneYear')
+	BEGIN
+		SET @SortOrder = 14
+	END
+      select @idField, Field_NameInDB, Field_Type,Field_Format,Field_DefaultValue,Field_DefaultValue, (select @SortOrder) as SortOrder from Parameters.Field where Field_Id=@idField
+	  INSERT Parameters.ReportFileField VALUES 
+		(3,@idField, (select Field_Type from Parameters.Field where Field_Id=@idField), (select Field_Format from Parameters.Field where Field_Id=@idField), (select Field_DefaultValue from Parameters.Field where Field_Id=@idField), @SortOrder,1)
+      SET @SortOrder = @SortOrder + 1
+	  FETCH NEXT FROM db_cursor INTO @idField 
+END 
+
+CLOSE db_cursor  
+DEALLOCATE db_cursor 
 /* */
 
