@@ -36,7 +36,7 @@ insert into Parameters.Field VALUES
 /*REPORTFILE*/
 INSERT INTO Parameters.ReportFile VALUES ('USTR_Holdings_MTH_{Period}_{GenerationDate}.csv','Holdings report','\\sunlifecorp.com\dfsslc\RL\Reports\CORIC\',2,1,NULL,NULL,'Horizontal')
 /**/
-insert into [CORIC].[Parameters].[ReportFileField] VALUES
+insert into Parameters.ReportFileField VALUES
 (1,1,'Varchar','',NULL,1,1),
 (1,2,'Date','yyyy-MM-dd',NULL,2,1),
 (1,3,'Varchar','',NULL,3,1),
