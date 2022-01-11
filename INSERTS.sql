@@ -13,7 +13,7 @@ insert into Parameters.Field VALUES
 ('StateCode','Code of State','StateCode',GETDATE(),NULL,'',1,'Varchar',NULL,''),
 ('DateAcquired','Adquisition Date','DateAcquired',GETDATE(),NULL,'yyyy-MM-dd',1,'Date',NULL,''),
 ('Quantity','Quantity','Quantity',GETDATE(),NULL,'',1,'Double',NULL,''),
-('Field_Description','CUSIP Field_Description','Field_Description',GETDATE(),NULL,'',1,'Varchar',NULL,''),
+('Description','CUSIP Description','Field_Description',GETDATE(),NULL,'',1,'Varchar',NULL,''),
 ('Coupon','Coupon Value','Coupon',GETDATE(),NULL,'',1,'Double',NULL,''),
 ('EffectiveMaturity','Maturity Date','MaturityDate',GETDATE(),NULL,'yyyy-MM-dd',1,'Date',NULL,''),
 ('MaturityDate','MaturityDate','MaturityDate',GETDATE(),NULL,'yyyy-MM-dd',1,'Date',NULL,''),
@@ -158,7 +158,7 @@ INSERT INTO Parameters.ReportFileFields VALUES
 (2, 31, 'Double', NULL, NULL, 10, 1),
 (2, 32, 'Double', NULL, NULL, 11, 1),
 (2, 58, 'Double', NULL, NULL, 12, 1),
-(2, PENDIENTE, 'Double', NULL, NULL, 13, 1),
+(2, 13, 'Double', NULL, NULL, 13, 1),
 (2, 22, 'Date', 'yyyy-MM-dd', NULL, 14, 1),
 (2, 33, 'Double', NULL, NULL, 15, 1),
 (2, 34, 'Double', NULL, NULL, 16, 1),
@@ -191,7 +191,7 @@ INSERT INTO Parameters.ReportFileFields VALUES
 
  
  /**/
-update Parameters.Field set Field_NameInDB = 'Description', Field_Description= 'CUSIP Description', Field_NameInExcel ='Description' where Field_Id = 13
+
 
  /*GABRIEL*/
 --FIELDS
