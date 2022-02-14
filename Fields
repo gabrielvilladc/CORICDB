@@ -1,0 +1,30 @@
+ProductId					USTR + PortfolioId
+PeriodDate					
+AdhocFlag					N
+LineofBusinessCode			USTR
+SortOrder					AUTOINCREMENTAL
+EquityFlag					N
+CUSIP						Cusip
+SecurityType				CellLabel
+StateCode					
+DateAcquired				
+Quantity					ParAmount
+Description					Issuer
+Coupon						Coupon
+EffectiveMaturity			
+MaturityDate				Maturity
+OriginalCost
+BookValue
+MarketValue					MarketValue
+UnrealizedGainLoss
+BookYield
+MarketYield					YTW
+EffectiveDuration			MDuration
+Convexity
+SAndP						RatingSP
+Moody						RatingMoodys
+NAICRating
+InternalRating
+Ticker
+ClosingPrice				Price
+AcquiredIncome
